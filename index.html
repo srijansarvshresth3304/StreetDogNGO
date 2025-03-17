@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
+    <meta name="keywords" content="Street Dogs, NGO, Adopt, Rescue, Donate, Animal Welfare, Volunteer">
+    <meta name="author" content="Your Name or Organization">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="NGO - Street Dogs | Rescue and Adoption">
+    <meta property="og:description"
+        content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
+    <meta property="og:image" content="https://yourdomain.com/Images/og-image.jpg">
+    <meta property="og:url" content="http://192.168.1.4:5500/HTML/index.html">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="NGO - Street Dogs | Rescue and Adoption">
+    <meta property="twitter:description"
+        content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
+    <meta property="twitter:image" content="https://yourdomain.com/Images/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" href="../Images/favicon.ico" type="image/x-icon">
+
+    <!-- Title -->
+    <title>NGO - Street Dogs | Rescue and Adoption</title>
+
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="../CSS/style.css">
+
+    <!-- Google Fonts (Optional) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome for Icons (Optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-p1r17M6U+4Y+8aX6e9VJq8yP2eH5Q6J2wZ1i5Lq3x6yJ8gM5q1Kj9w0yK4K7b1m5k5Q8p2r1mW9vZ9u7v7E7XW2g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <!-- Existing Body Content -->
+    <header>
+        <nav>
+            <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#about-us" onclick="smoothScroll(event, '#about-us')">About Us</a></li>
+                <li><a href="#news" onclick="smoothScroll(event, '#news')">News</a></li>
+                <li><a href="#donate-us" onclick="smoothScroll(event, '#donate-us')">Donate</a></li>
+                <li><a href="#adopt" onclick="smoothScroll(event, '#adopt')">Adopt Puppies</a></li>
+            </ul>
+        </nav>
+
+        <div class="gallery">
+            <button class="arrow left-arrow" id="left-arrow" onclick="slideLeft()">&#10094;</button>
+
+            <div class="images-container">
+                <img src="../Images/dog_1.webp" alt="Adorable street dog looking for a home" loading="lazy">
+                <img src="../Images/dog_2.webp" alt="Happy street dog enjoying a meal" loading="lazy">
+                <img src="../Images/dog_3.webp" alt="Street dog playing with a toy" loading="lazy">
+                <img src="../Images/dog_4.webp" alt="Street dog receiving medical care" loading="lazy">
+                <img src="../Images/dog_5.webp" alt="Street dog in a loving home" loading="lazy">
+            </div>
+
+            <div class="dots-container">
+                <!-- Dots will be injected here by JavaScript -->
+            </div>
+
+            <div id="donate">
+                <button>Donate Today</button>
+            </div>
+
+            <button class="arrow right-arrow" id="right-arrow" onclick="slideRight()">&#10095;</button>
+        </div>
+    </header>
+
+    <main>
+        <section class="sec" id="sec-1">
+            <div id="sec1-left" class="sec1">
+                <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/2024-End-of-Year-Impact-Report-2024-1.jpg"
+                    alt="About us photos" loading="lazy">
+                <p>Read our 2024 Impact Report</p>
+                <button>Read the Report</button>
+            </div>
+            <div id="sec1-right" class="sec1">
+                <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/Untitled-design.jpg"
+                    alt="Rescue team rescuing dogs" loading="lazy">
+                <p>Learn about our new Karuna Rural Village Program</p>
+                <button>Learn about the program</button>
+            </div>
+        </section>
+
+        <div id="divider"></div>
+
+        <section class="sec" id="sec-2">
+            <h2>Our Mission</h2>
+            <p>We are dedicated to rescuing street dogs and giving them the love and care they deserve. Through our team
+                of volunteers and donors, we have saved over 500 dogs.</p>
+            <img src="../Images/team.jpg" alt="Rescue team in action" loading="lazy">
+        </section>
+
+        <div id="divider"></div>
+
+        <section class="sec" id="sec-3">
+            <h2>Success Stories</h2>
+            <p>Meet Bella, a street dog who was adopted and now lives in a loving home.</p>
+            <img src="../Images/bella.jpeg" alt="Adopted dog" loading="lazy">
+            <button>Read More Stories</button>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 NGO - Street Dogs. All Rights Reserved.</p>
+            <ul class="socials">
+                <li><a href="#" onclick="smoothScroll(event, '#contact')">Facebook</a></li>
+                <li><a href="#" onclick="smoothScroll(event, '#contact')">Instagram</a></li>
+                <li><a href="#" onclick="smoothScroll(event, '#contact')">Twitter</a></li>
+            </ul>
+            <button onclick="scrollToTop()">Back to Top</button>
+        </div>
+    </footer>
+
+    <!-- JavaScript Links -->
+    <script src="../JS/script.js"></script>
+</body>
+
+</html>
