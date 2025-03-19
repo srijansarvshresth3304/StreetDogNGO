@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- SEO Meta Tags -->
     <meta name="description"
         content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
     <meta name="keywords" content="Street Dogs, NGO, Adopt, Rescue, Donate, Animal Welfare, Volunteer">
     <meta name="author" content="Your Name or Organization">
-
     <!-- Open Graph / Facebook -->
     <meta property="og:title" content="NGO - Street Dogs | Rescue and Adoption">
     <meta property="og:description"
@@ -19,27 +17,21 @@
     <meta property="og:image" content="https://yourdomain.com/Images/og-image.jpg">
     <meta property="og:url" content="http://192.168.1.4:5500/HTML/index.html">
     <meta property="og:type" content="website">
-
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="NGO - Street Dogs | Rescue and Adoption">
     <meta property="twitter:description"
         content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
     <meta property="twitter:image" content="https://yourdomain.com/Images/twitter-image.jpg">
-
     <!-- Favicon -->
     <link rel="icon" href="street_dog_NGO_favicon.webp" type="image/webp">
-
     <!-- Title -->
     <title>NGO - Street Dogs | Rescue and Adoption</title>
-
     <!-- CSS Links -->
     <link rel="stylesheet" href="style.css">
-
 </head>
 
 <body>
-    <!-- Existing Body Content -->
     <header>
         <nav role="navigation">
             <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
@@ -51,11 +43,8 @@
                 <li><a href="adopt-us.html" target="_blank">Adopt Puppies</a></li>
             </ul>
         </nav>
-        <h1>Welcome to our street dog NGO Website</h1>
-
         <div class="gallery">
-            <button class="arrow left-arrow" id="left-arrow" onclick="slideLeft()">&#10094;</button>
-
+            <button class="arrow left-arrow" id="left-arrow" onclick="slideLeft()">❮</button>
             <div class="images-container">
                 <img src="dog_1.webp" alt="Adorable street dog looking for a home" loading="lazy">
                 <img src="dog_2.webp" alt="Happy street dog enjoying a meal" loading="lazy">
@@ -63,20 +52,16 @@
                 <img src="dog_4.webp" alt="Street dog receiving medical care" loading="lazy">
                 <img src="dog_5.webp" alt="Street dog in a loving home" loading="lazy">
             </div>
-
-            <div class="dots-container">
-                <!-- Dots will be injected here by JavaScript -->
-            </div>
-
+            <div class="dots-container"></div>
             <div id="donate">
                 <button class="btn"><a href="donate.html" target="_blank">Donate Today</a></button>
             </div>
-
-            <button class="arrow right-arrow" id="right-arrow" onclick="slideRight()">&#10095;</button>
+            <button class="arrow right-arrow" id="right-arrow" onclick="slideRight()">❯</button>
         </div>
     </header>
 
     <main>
+        <h1>Welcome to our street dog NGO Website</h1> <!-- Moved h1 to main -->
         <section class="sec" id="sec-1">
             <div id="sec1-left" class="sec1">
                 <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/2024-End-of-Year-Impact-Report-2024-1.jpg"
@@ -113,17 +98,16 @@
 
     <footer>
         <div class="footer-content">
-            <p>&copy; 2025 NGO - Street Dogs. All Rights Reserved.</p>
+            <p>© 2025 NGO - Street Dogs. All Rights Reserved.</p>
             <ul class="socials">
                 <li><a href="#" onclick="smoothScroll(event, '#contact')">Facebook</a></li>
                 <li><a href="#" onclick="smoothScroll(event, '#contact')">Instagram</a></li>
                 <li><a href="#" onclick="smoothScroll(event, '#contact')">Twitter</a></li>
             </ul>
-            <button  class="btn"onclick="scrollToTop()">Back to Top</button>
+            <button class="btn" onclick="scrollToTop()">Back to Top</button>
         </div>
     </footer>
 
-    <!-- JavaScript Links -->
     <script src="script.js"></script>
 </body>
 
