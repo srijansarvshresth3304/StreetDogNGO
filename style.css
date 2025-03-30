@@ -412,3 +412,15 @@ footer .socials li a:hover {
         font-size: 1.6rem;
     }
 }
+#donationForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+  }
+  input, button {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+  }
