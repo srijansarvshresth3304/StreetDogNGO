@@ -164,3 +164,41 @@
     window.scrollToTop = galleryControls.scrollToTop;
     window.openDonateModal = galleryControls.openDonateModal;
 })();
+function sendEmailToBoth() {
+    const donorName = document.getElementById('name').value;
+    const donorEmail = document.getElementById('email').value;
+    const donorAmount = document.getElementById('amount').value;
+  
+    // Email to NGO Owner
+    emailjs.send(
+      'service_ou9h6z4', 
+      'template_slw0vbb', // NGO template ID
+      {
+        name: donorName,
+        email: donorEmail,
+        amount: donorAmount
+      }
+    ).then(() => {
+      console.log('NGO email sent!');
+    });
+  
+    // Email to Donor (Client)
+    emailjs.send(
+      'service_ou9h6z4', 
+      'template_b2unv72', // Client template ID
+      {
+        name: donorName,
+        amount: donorAmount,
+        email: donorEmail // Used as the recipient in the client's template
+      }
+    ).then(() => {
+      console.log('Client email sent!');
+    });
+  }
+  document.getElementById('donationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    setTimeout(() => {
+      document.getElementById('confirmationMessage').style.display = 'block';
+      sendEmailToBoth(); // Send emails to both parties
+    }, 2000);
+  });
