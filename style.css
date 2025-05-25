@@ -21,38 +21,39 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: white;
     background-color: var(--primary-color);
     line-height: 1.6;
 }
 
-h1 {
-    font-size: 2rem;
-    text-align: center;
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
     color: black;
+}
+
+h1 {
+    font-size: 4rem;
+    text-align: center;
     margin: 2rem 0;
-    /* Adjusted margin */
+}
+
+h2 {
+    font-size: 3.2rem;
+    margin-bottom: 1.5rem;
 }
 
 header {
     width: 100%;
 }
 
-header nav[role="navigation"] {
+nav[role="navigation"] {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
+    height: 8vh;
     background-color: var(--background-color);
-    position: relative;
     padding: 0 2rem;
-}
-
-a {
-    text-decoration: none;
-    color: var(--primary-color);
-    transition: color 0.3s ease;
 }
 
 .hamburger {
@@ -60,23 +61,20 @@ a {
     font-size: 3rem;
     cursor: pointer;
     color: var(--primary-color);
-    margin-left: 10px;
-    margin-bottom: 5px;
 }
 
 .nav-links {
     display: flex;
     justify-content: space-around;
-    width: 100vw;
-    font-size: 2rem;
+    width: 100%;
     list-style: none;
-    padding: 1rem 0;
-    margin-top: 0;
+    padding: 0;
 }
 
 .nav-links li a {
     text-decoration: none;
     color: var(--primary-color);
+    font-size: 1.8rem;
     padding: 0.5rem 1rem;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -86,31 +84,59 @@ a {
     background-color: var(--accent-color);
     color: white;
     border-radius: 5px;
-    outline: none;
 }
 
-.gallery {
+#gallery {
+    position: relative;
+    width: 75%;
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+    /* overflow: hidden; */
+    /* gap: 3rem; */
+    /* flex-wrap: wrap; */
+    /* border: 2px solid red; */
+}
+.gallery{
     position: relative;
     width: 100%;
-    height: 90vh;
+    height: 80vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     overflow: hidden;
-    z-index: 1;
 }
-
-.gallery .images-container {
+.images-container {
     display: flex;
     transition: transform 0.4s ease-in-out;
     width: calc(100vw * 5);
-    will-change: transform;
+
 }
 
-.gallery .images-container img {
+.images-container figure {
+    position: relative;
     width: 100vw;
-    height: 90vh;
+    height: 80vh;
+}
+
+.images-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+
+}
+
+.images-container figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.6rem;
+    padding: 4rem 0;
 }
 
 .arrow {
@@ -120,10 +146,10 @@ a {
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
     border: none;
-    padding: 10px;
+    padding: 1rem;
     cursor: pointer;
-    z-index: 2;
     font-size: 2rem;
+    z-index: 2;
     transition: opacity 0.3s;
 }
 
@@ -147,8 +173,8 @@ a {
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
+    height: 12px;
+    width: 12px;
     margin: 0 5px;
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 50%;
@@ -157,74 +183,76 @@ a {
     transition: background-color 0.3s ease;
 }
 
-.dot.active,
-.dot:focus {
-    background-color: rgba(255, 255, 255, 1);
-    outline: 2px solid var(--accent-color);
+.dot.active {
+    background-color: white;
 }
 
 #donate {
     position: absolute;
-    /* width: 20%; */
-    /* min-height: 5rem; */
-    color: white;
-    z-index: 2;
     top: 50%;
-    /* right: 100px; */
-    display: flex;
-    align-items: center;
-    width: 20%;
     right: 2rem;
-    bottom: 0;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+#donate button a{
+    text-decoration: none;
+    color: white;
 }
 
 #divider {
     width: 100%;
     height: 4px;
     background: linear-gradient(to right, var(--secondary-color), var(--accent-color));
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
+#searchInput{
+    height: 5vh;
+    border-radius: 10px;
+    padding: 2rem;
+}
+#filterType{
+    border-radius: 10px;
+    /* padding: 1rem 2rem; */
+}
 main {
-    width: 100%;
     flex: 1;
 }
 
 .sec {
     width: 100%;
-    min-height: 100vh;
+    min-height: 80vh;
     padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     color: black;
 }
 
-.sec h2 {
-    font-size: 4rem;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
 .sec p {
-    font-size: 2rem;
+    font-size: 1.8rem;
     text-align: center;
-    margin: 2rem 0;
     max-width: 80%;
+    margin: 1.5rem 0;
 }
 
 .sec img {
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    margin: 2rem 0;
+    margin: 1.5rem 0;
+}
+
+.sec1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 45%;
 }
 
 .btn {
     padding: 1rem 2rem;
     font-size: 1.6rem;
-    border-radius: 4px;
+    border-radius: 5px;
     background-color: var(--accent-color);
     color: white;
     border: none;
@@ -232,49 +260,57 @@ main {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn:hover,
-.btn:focus {
+.btn:hover {
     background-color: #3d8e90;
-    transform: translateY(-2px) scale(1.1);
-    outline: none;
+    transform: scale(1.05);
 }
 
-.donation-form {
+#donationForm {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.5rem;
     max-width: 400px;
-    width: 100%;
+    margin: 2rem auto;
     padding: 2rem;
     background-color: rgba(72, 166, 167, 0.1);
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
-.donation-form label {
+#donationForm label {
     font-size: 1.8rem;
-    color: #333;
+    color: black;
 }
 
-.donation-form input {
-    padding: 0.5rem;
+#donationForm input, #donationForm select {
+    padding: 1rem;
     font-size: 1.6rem;
+    border-radius: 5px;
     border: 1px solid #ccc;
-    border-radius: 4px;
 }
 
-.adoption-gallery {
+#donationForm button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.adopt-gallery {
     display: flex;
-    gap: 1rem;
     flex-wrap: wrap;
+    gap: 2rem;
     justify-content: center;
     margin: 2rem 0;
 }
 
-.adoption-gallery img {
-    width: 300px;
-    height: 300px;
+.adopt-gallery img {
+    width: 200px;
+    height: 150px;
     object-fit: cover;
     border-radius: 8px;
+    gap: 4rem;
 }
 
 footer {
@@ -288,24 +324,26 @@ footer .socials {
     list-style: none;
     display: flex;
     justify-content: center;
+    gap: 2rem;
     margin: 1rem 0;
 }
 
-footer .socials li {
-    margin: 0 2rem;
-}
-
 footer .socials li a {
-    text-decoration: none;
     color: var(--primary-color);
     font-size: 2rem;
-    transition: color 0.3s ease;
 }
 
 footer .socials li a:hover {
     color: var(--highlight-color);
 }
+footer address p a{
+    color: yellow;
+}
 
+footer address p{
+    margin-left: 5rem;
+
+}
 @media (max-width: 768px) {
     .hamburger {
         display: block;
@@ -317,105 +355,59 @@ footer .socials li a:hover {
         width: 100%;
         background-color: var(--background-color);
         position: absolute;
-        top: 7vh;
-        /* Adjusted to match nav height */
+        top: 8vh;
         left: 0;
         padding: 1rem;
         z-index: 10;
-        margin-top: 0;
     }
-    #donate {
-        position: absolute;
-        top: 50%;
-        width: 40%;
-        left: 70%;
-        /* bottom: 0; */
-    }
+
     .nav-links.active {
         display: flex;
     }
 
     .nav-links li a {
-        font-size: 2.5rem;
+        font-size: 2rem;
         padding: 1rem;
-        width: 100%;
         text-align: center;
     }
 
     .gallery {
-        height: 60vh;
+        height: 35vh;
     }
 
-    .gallery .images-container img {
-        height: 60vh;
+    .images-container img {
+        height: 35vh;
     }
 
     #donate {
-        width: 50%;
-        right: 25%;
+        width: 40%;
+        right: 1rem;
     }
 
-    .btn {
-        padding: 0.8rem 1.5rem;
-        font-size: 1.4rem;
-    }
-
-    .donation-form {
-        padding: 1rem;
-    }
-
-    .adoption-gallery img {
+    .sec1 {
         width: 100%;
-        height: auto;
     }
 }
 
 @media (max-width: 370px) {
     h1 {
-        font-size: 2.4rem;
-    }
-
-    .hamburger {
-        display: block;
+        font-size: 3rem;
     }
 
     .nav-links li a {
-        font-size: 1.8rem;
-        padding: 0.4rem 0.8rem;
+        font-size: 1.6rem;
     }
 
-    .gallery .images-container img {
-        height: 50vh;
+    .gallery {
+        height: 20vh;
+    }
+
+    .images-container img {
+        height: 20vh;
     }
 
     #donate {
-        width: 30%;
-        left: 60%;
-        bottom: 0;
-    }
-
-    .btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 1.2rem;
-    }
-
-    .donation-form {
-        padding: 0.8rem;
-    }
-
-    .adoption-gallery img {
-        width: 90%;
-        height: auto;
-    }
-
-    footer .socials li a {
-        font-size: 1.6rem;
+        width: 50%;
+        right: 0.5rem;
     }
 }
-#donationForm {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-  }
