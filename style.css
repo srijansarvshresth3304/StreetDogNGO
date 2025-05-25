@@ -421,6 +421,6 @@ footer .socials li a:hover {
   }
   input, button {
     width: 100%;
-/*     padding: 10px; */
-/*     margin: 5px 0; */
+    padding: 10px;
+    margin: 5px 0;
   }
