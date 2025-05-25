@@ -1,48 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- SEO Meta Tags -->
-    <meta name="description"
-        content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
+    <meta name="description" content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
     <meta name="keywords" content="Street Dogs, NGO, Adopt, Rescue, Donate, Animal Welfare, Volunteer">
-    <meta name="author" content="Your Name or Organization">
+    <meta name="author" content="Srijan Sarvshresth">
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="NGO - Street Dogs | Rescue and Adoption">
-    <meta property="og:description"
-        content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
+    <meta property="og:title" content="继父 - Street Dogs | Rescue and Adoption">
+    <meta property="og:description" content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
     <meta property="og:image" content="https://yourdomain.com/Images/og-image.jpg">
-    <meta property="og:url" content="http://192.168.1.4:5500/HTML/index.html">
+    <meta property="og:url" content="https://yourdomain.com">
     <meta property="og:type" content="website">
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:title" content="NGO - Street Dogs | Rescue and Adoption">
-    <meta property="twitter:description"
-        content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
+    <meta property="twitter:description" content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
     <meta property="twitter:image" content="https://yourdomain.com/Images/twitter-image.jpg">
     <!-- Favicon -->
     <link rel="icon" href="street_dog_NGO_favicon.webp" type="image/webp">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Title -->
     <title>NGO - Street Dogs | Rescue and Adoption</title>
-    <script type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-</script>
-<script type="text/javascript">
-   (function(){
-      emailjs.init({
-        publicKey: "-Rh-4kzkCcuPl6obd",
-      });
-   })();
-</script>
-    <!-- CSS Links -->
-
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({ publicKey: "-Rh-4kzkCcuPl6obd" });
+        })();
+    </script>
+    <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
     <header>
         <nav role="navigation">
@@ -56,71 +48,77 @@
             </ul>
         </nav>
         <div class="gallery">
-            <button class="arrow left-arrow" id="left-arrow" onclick="slideLeft()">❮</button>
+            <button class="arrow left-arrow" id="left-arrow" onclick="slideLeft()" aria-label="Previous image">❮</button>
             <div class="images-container">
-                <img src="dog_1.webp" alt="Adorable street dog looking for a home" loading="lazy">
-                <img src="dog_2.webp" alt="Happy street dog enjoying a meal" loading="lazy">
-                <img src="dog_3.webp" alt="Street dog playing with a toy" loading="lazy">
-                <img src="dog_4.webp" alt="Street dog receiving medical care" loading="lazy">
-                <img src="dog_5.webp" alt="Street dog in a loving home" loading="lazy">
+                <figure>
+                    <img src="dog_1.webp" alt="Adorable street dog looking for a home" loading="lazy">
+                    <figcaption>Adorable street dog looking for a home</figcaption>
+                </figure>
+                <figure>
+                    <img src="dog_2.webp" alt="Happy street dog enjoying a meal" loading="lazy">
+                    <figcaption>Happy street dog enjoying a meal</figcaption>
+                </figure>
+                <figure>
+                    <img src="dog_3.webp" alt="Street dog playing with a toy" loading="lazy">
+                    <figcaption>Street dog playing with a toy</figcaption>
+                </figure>
+                <figure>
+                    <img src="dog_4.webp" alt="Street dog receiving medical care" loading="lazy">
+                    <figcaption>Street dog receiving medical care</figcaption>
+                </figure>
+                <figure>
+                    <img src="dog_5.webp" alt="Street dog in a loving home" loading="lazy">
+                    <figcaption>Street dog in a loving home</figcaption>
+                </figure>
             </div>
             <div class="dots-container"></div>
             <div id="donate">
-                <button class="btn"><a href="donate.html" target="_blank">Donate Today</a></button>
+                <button class="btn"><a href="donate.html">Donate Today</a></button>
             </div>
-            <button class="arrow right-arrow" id="right-arrow" onclick="slideRight()">❯</button>
+            <button class="arrow right-arrow" id="right-arrow" onclick="slideRight()" aria-label="Next image">❯</button>
         </div>
     </header>
-
     <main>
-        <h1>Welcome to our street dog NGO Website</h1> <!-- Moved h1 to main -->
+        <h1>Welcome to Our Street Dog NGO</h1>
         <section class="sec" id="sec-1">
             <div id="sec1-left" class="sec1">
-                <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/2024-End-of-Year-Impact-Report-2024-1.jpg"
-                    alt="About us photos" loading="lazy">
+                <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/2024-End-of-Year-Impact-Report-2024-1.jpg" alt="2024 Impact Report" loading="lazy">
                 <p>Read our 2024 Impact Report</p>
                 <button class="btn">Read the Report</button>
             </div>
             <div id="sec1-right" class="sec1">
-                <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/Untitled-design.jpg"
-                    alt="Rescue team rescuing dogs" loading="lazy">
+                <img src="https://dharamsalaanimalrescue.org/wp-content/uploads/2025/01/Untitled-design.jpg" alt="Karuna Rural Village Program" loading="lazy">
                 <p>Learn about our new Karuna Rural Village Program</p>
-                <button class="btn">Learn about the program</button>
+                <button class="btn">Learn about the Program</button>
             </div>
         </section>
-
         <div id="divider"></div>
-
         <section class="sec" id="sec-2">
             <h2>Our Mission</h2>
-            <p>We are dedicated to rescuing street dogs and giving them the love and care they deserve. Through our team
-                of volunteers and donors, we have saved over 500 dogs.</p>
+            <p>We are dedicated to rescuing street dogs and giving them the love and care they deserve. Through our team of volunteers and donors, we have saved over 500 dogs.</p>
             <img src="team.jpg" alt="Rescue team in action" loading="lazy">
         </section>
-
         <div id="divider"></div>
-
         <section class="sec" id="sec-3">
             <h2>Success Stories</h2>
             <p>Meet Bella, a street dog who was adopted and now lives in a loving home.</p>
-            <img src="bella.jpeg" alt="Adopted dog" loading="lazy">
+            <img src="bella.jpeg" alt="Adopted dog Bella" loading="lazy">
             <button class="btn">Read More Stories</button>
         </section>
     </main>
-
     <footer>
         <div class="footer-content">
-            <p>© 2025 NGO - Street Dogs. All Rights Reserved.</p>
-            <ul class="socials">
-                <li><a href="#" onclick="smoothScroll(event, '#contact')">Facebook</a></li>
-                <li><a href="#" onclick="smoothScroll(event, '#contact')">Instagram</a></li>
-                <li><a href="#" onclick="smoothScroll(event, '#contact')">Twitter</a></li>
+            <address>
+                <p>© 2025 NGO - Street Dogs. All Rights Reserved. Contact: <a href="mailto:info@ngostreetdogs.org">info@ngostreetdogs.org</a></p>
+            </address>
+            <ul class="socials" role="list">
+                <li><a href="https://facebook.com/ngostreetdogs" target="_blank" aria-label="Visit us on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://instagram.com/ngostreetdogs" target="_blank" aria-label="Visit us on Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/ngostreetdogs" target="_blank" aria-label="Visit us on Twitter"><i class="fab fa-twitter"></i></a></li>
             </ul>
             <button class="btn" onclick="scrollToTop()">Back to Top</button>
         </div>
     </footer>
-
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
-
 </html>
