@@ -1,65 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Adopt a street dog and give them a loving home. Browse our available puppies today!">
-    <meta name="keywords" content="Adopt, Street Dogs, NGO, Puppies, Adoption">
-    <meta name="author" content="Your Name or Organization">
+    <meta name="description" content="Adopt stray dogs and cats through our platform to give them a loving home.">
+    <meta name="keywords" content="Adopt Puppies, Street Dogs, NGO, Adoption, Stray Animals">
+    <meta name="author" content="Srijan Sarvshresth">
     <title>Adopt Puppies | NGO - Street Dogs</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="street_dog_NGO_favicon.webp" type="image/webp">
-    <link rel="icon" href="street_dog_NGO_favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <header>
         <nav role="navigation">
             <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
             <ul class="nav-links">
-                <li><a href="index.html" target="_blank">Home</a></li>
-                <li><a href="about-us.html" target="_blank">About Us</a></li>
-                <li><a href="news.html" target="_blank">News</a></li>
-                <li><a href="donate.html" target="_blank">Donate</a></li>
-                <li><a href="adopt-us.html" target="_blank">Adopt Puppies</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="adopt-us.html">Adopt Puppies</a></li>
             </ul>
         </nav>
     </header>
-
     <main>
-        <section class="sec" id="adopt">
-            <h2>Adopt Puppies</h2>
-            <p>Give a street dog a forever home! Browse our available puppies and start the adoption process today.</p>
-            <div class="adoption-gallery">
-                <img src="dog_1.webp" alt="Puppy 1 available for adoption" loading="lazy">
-                <img src="dog_2.webp" alt="Puppy 2 available for adoption" loading="lazy">
-                <img src="dog_3.webp" alt="Puppy 3 available for adoption" loading="lazy">
+        <section class="sec" id="adopt-us">
+            <h1>Adopt Puppies</h1>
+            <p>Give a stray dog or cat a forever home. Browse our available animals below and filter by type or search by name/location.</p>
+            <div class="adopt-gallery">
+                <input type="text" id="searchInput" placeholder="Search by name or location">
+                <select id="filterType">
+                    <option value="all">All Animals</option>
+                    <option value="dog">Dogs</option>
+                    <option value="cat">Cats</option>
+                </select>
+                <div id="gallery">
+                    <!-- Dynamic content will be added via JavaScript -->
+                </div>
             </div>
-            <button class="btn">Start Adoption Process</button>
         </section>
     </main>
-
     <footer>
         <div class="footer-content">
             <address>
-                <p>© 2025 NGO - Street Dogs. All Rights Reserved. Contact: info@ngostreetdogs.org</p>
+                <p>© 2025 NGO - Street Dogs. All Rights Reserved. Contact: <a href="mailto:info@ngostreetdogs.org">info@ngostreetdogs.org</a></p>
             </address>
             <ul class="socials" role="list">
-                <li><a href="https://facebook.com/ngostreetdogs" target="_blank" aria-label="Visit us on Facebook"><i
-                            class="fab fa-facebook-f"></i></a></li>
-                <li><a href="https://instagram.com/ngostreetdogs" target="_blank" aria-label="Visit us on Instagram"><i
-                            class="fab fa-instagram"></i></a></li>
-                <li><a href="https://twitter.com/ngostreetdogs" target="_blank" aria-label="Visit us on Twitter"><i
-                            class="fab fa-twitter"></i></a></li>
+                <li><a href="https://facebook.com/ngostreetdogs" target="_blank" aria-label="Visit us on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://instagram.com/ngostreetdogs" target="_blank" aria-label="Visit us on Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/ngostreetdogs" target="_blank" aria-label="Visit us on Twitter"><i class="fab fa-twitter"></i></a></li>
             </ul>
             <button class="btn" onclick="scrollToTop()">Back to Top</button>
         </div>
     </footer>
-
     <script src="script.js" defer></script>
 </body>
-
 </html>
