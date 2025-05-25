@@ -3,20 +3,13 @@
 
     const galleryControls = (function () {
         const imagesContainer = document.querySelector('.images-container');
-        const images = imagesContainer
-            ? imagesContainer.querySelectorAll('img')
-            : [];
+        const images = imagesContainer ? imagesContainer.querySelectorAll('img') : [];
         const leftArrow = document.getElementById('left-arrow');
         const rightArrow = document.getElementById('right-arrow');
         const dotsContainer = document.querySelector('.dots-container');
         const gallery = document.querySelector('.gallery');
         let currentIndex = 0;
         let autoSlideTimeout;
-
-        // Debug: Log initial values
-        console.log('Images found:', images.length);
-        console.log('Left Arrow:', leftArrow);
-        console.log('Right Arrow:', rightArrow);
 
         function debounce(func, wait) {
             let timeout;
@@ -29,42 +22,30 @@
         function updateArrows() {
             if (leftArrow && rightArrow) {
                 leftArrow.style.display = currentIndex === 0 ? 'none' : 'block';
-                rightArrow.style.display =
-                    currentIndex === images.length - 1 ? 'none' : 'block';
+                rightArrow.style.display = currentIndex === images.length - 1 ? 'none' : 'block';
             }
         }
 
         function slideLeft() {
-            console.log('Sliding Left, Current Index:', currentIndex); // Debug
             if (currentIndex > 0) {
                 currentIndex--;
                 updateGallery();
-            } else {
-                console.log('At start, cannot slide left');
             }
         }
 
         function slideRight() {
-            console.log('Sliding Right, Current Index:', currentIndex); // Debug
             if (currentIndex < images.length - 1) {
                 currentIndex++;
                 updateGallery();
-            } else {
-                console.log('At end, cannot slide right');
             }
         }
 
         function updateGallery() {
             if (imagesContainer && images.length > 0) {
-                imagesContainer.style.transform = `translateX(-${
-                    currentIndex * 100
-                }vw)`;
+                imagesContainer.style.transform = `translateX(-${currentIndex * 100}vw)`;
                 updateArrows();
                 updateDots();
                 resetAutoSlide();
-                console.log('Gallery updated to index:', currentIndex); // Debug
-            } else {
-                console.error('No images or container found');
             }
         }
 
@@ -100,10 +81,6 @@
             }
         }
 
-        function openDonateModal() {
-            alert('Donate modal would open here! (Add your donation logic)');
-        }
-
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
@@ -113,92 +90,126 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function smoothScroll(event, targetId) {
-            event.preventDefault();
-            const target = document.querySelector(targetId);
-            if (target) {
-                window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
-            }
-        }
-
-        // Initialize when DOM is fully loaded
         function init() {
             if (images.length === 0) {
-                console.error(
-                    'No images found in gallery. Check HTML structure.'
-                );
+                console.error('No images found in gallery.');
                 return;
             }
             updateArrows();
             updateDots();
             startAutoSlide();
 
-            // Ensure arrows are clickable
             if (leftArrow) leftArrow.addEventListener('click', slideLeft);
             if (rightArrow) rightArrow.addEventListener('click', slideRight);
 
-            // Event Listeners
-            gallery.addEventListener('mouseenter', () =>
-                clearTimeout(autoSlideTimeout)
-            );
-            gallery.addEventListener('mouseleave', () => startAutoSlide());
-            gallery.addEventListener('touchstart', () =>
-                clearTimeout(autoSlideTimeout)
-            );
-            gallery.addEventListener('touchend', () => startAutoSlide());
+            if (gallery) {
+                gallery.addEventListener('mouseenter', () => clearTimeout(autoSlideTimeout));
+                gallery.addEventListener('mouseleave', () => startAutoSlide());
+                gallery.addEventListener('touchstart', () => clearTimeout(autoSlideTimeout));
+                gallery.addEventListener('touchend', () => startAutoSlide());
+            }
+
             window.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') slideLeft();
                 else if (e.key === 'ArrowRight') slideRight();
             });
         }
 
-        // Run init when DOM is loaded
         document.addEventListener('DOMContentLoaded', init);
 
-        return { openDonateModal, toggleMenu, scrollToTop, smoothScroll };
+        return { toggleMenu, scrollToTop };
     })();
 
-    // Expose functions globally for HTML onclick
     window.toggleMenu = galleryControls.toggleMenu;
-    window.smoothScroll = galleryControls.smoothScroll;
     window.scrollToTop = galleryControls.scrollToTop;
-    window.openDonateModal = galleryControls.openDonateModal;
+
+    // EmailJS Donation Handling
+    function sendEmailToBoth() {
+        const donorName = document.getElementById('name')?.value;
+        const donorEmail = document.getElementById('email')?.value;
+        const donorAmount = document.getElementById('amount')?.value;
+
+        // Email to NGO Owner
+        emailjs.send('service_ou9h6z4', 'template_slw0vbb', {
+            name: donorName,
+            email: donorEmail,
+            amount: donorAmount,
+            to_email: 'srijansarv1345@gmail.com'
+        }).then(() => {
+            console.log('NGO email sent!');
+        }).catch(error => {
+            console.error('Error sending NGO email:', error);
+        });
+
+        // Email to Donor
+        emailjs.send('service_ou9h6z4', 'template_b2unv72', {
+            name: donorName,
+            amount: donorAmount,
+            email: donorEmail
+        }).then(() => {
+            console.log('Client email sent!');
+        }).catch(error => {
+            console.error('Error sending client email:', error);
+        });
+    }
+
+    const donationForm = document.getElementById('donationForm');
+    if (donationForm) {
+        donationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const loadingMessage = document.getElementById('loadingMessage');
+            const confirmationMessage = document.getElementById('confirmationMessage');
+
+            if (loadingMessage) loadingMessage.style.display = 'block';
+            setTimeout(() => {
+                if (loadingMessage) loadingMessage.style.display = 'none';
+                if (confirmationMessage) confirmationMessage.style.display = 'block';
+                sendEmailToBoth();
+                donationForm.reset();
+                setTimeout(() => {
+                    if (confirmationMessage) confirmationMessage.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+    }
+
+    // Adopt Gallery Dynamic Content
+    const adoptGallery = document.getElementById('gallery');
+    if (adoptGallery) {
+        const animals = [
+            { name: 'Bella', type: 'dog', location: 'Delhi', image: 'bella.png' },
+            { name: 'Luna', type: 'cat', location: 'Mumbai', image: 'luna.png' },
+            { name: 'Max', type: 'dog', location: 'Bangalore', image: 'max.png' }
+        ];
+
+        function renderGallery(animals) {
+            adoptGallery.innerHTML = '';
+            animals.forEach(animal => {
+                const item = document.createElement('div');
+                item.classList.add('adopt-item');
+                item.innerHTML = `
+                    <img src="${animal.image}" alt="${animal.name}" loading="lazy">
+                    <p>${animal.name} - ${animal.type} (${animal.location})</p>
+                `;
+                adoptGallery.appendChild(item);
+            });
+        }
+
+        function filterAnimals() {
+            const searchInput = document.getElementById('searchInput')?.value.toLowerCase();
+            const filterType = document.getElementById('filterType')?.value;
+
+            const filteredAnimals = animals.filter(animal => {
+                const matchesSearch = animal.name.toLowerCase().includes(searchInput) || animal.location.toLowerCase().includes(searchInput);
+                const matchesType = filterType === 'all' || animal.type === filterType;
+                return matchesSearch && matchesType;
+            });
+
+            renderGallery(filteredAnimals);
+        }
+
+        document.getElementById('searchInput')?.addEventListener('input', filterAnimals);
+        document.getElementById('filterType')?.addEventListener('change', filterAnimals);
+        renderGallery(animals);
+    }
 })();
-function sendEmailToBoth() {
-    const donorName = document.getElementById('name').value;
-    const donorEmail = document.getElementById('email').value;
-    const donorAmount = document.getElementById('amount').value;
-  
-    // Email to NGO Owner
-    emailjs.send(
-      'service_ou9h6z4', 
-      'template_slw0vbb', // NGO template ID
-      {
-        name: donorName,
-        email: donorEmail,
-        amount: donorAmount
-      }
-    ).then(() => {
-      console.log('NGO email sent!');
-    });
-  
-    // Email to Donor (Client)
-    emailjs.send(
-      'service_ou9h6z4', 
-      'template_b2unv72', // Client template ID
-      {
-        name: donorName,
-        amount: donorAmount,
-        email: donorEmail // Used as the recipient in the client's template
-      }
-    ).then(() => {
-      console.log('Client email sent!');
-    });
-  }
-  document.getElementById('donationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    setTimeout(() => {
-      document.getElementById('confirmationMessage').style.display = 'block';
-      sendEmailToBoth(); // Send emails to both parties
-    }, 2000);
-  });
