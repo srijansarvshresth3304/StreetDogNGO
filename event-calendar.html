@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Join our upcoming events - adoption drives, vaccination camps, and awareness programs.">
+    <meta name="keywords" content="Events, Street Dogs, NGO, Adoption Drive, Vaccination, Community">
+    <meta name="author" content="Srijan Sarvshresth">
+    <title>Events | NGO - Street Dogs</title>
+    <link rel="icon" href="street_dog_NGO_favicon.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({ publicKey: "-Rh-4kzkCcuPl6obd" });
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <nav role="navigation">
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="adopt-us.html">Adopt Puppies</a></li>
+                <li><a href="contact-us.html">Contact</a></li>
+                <li><a href="event-calendar.html">Events</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="sec" id="events">
+            <h1>Upcoming Events</h1>
+            <p>Join us in our mission to help street dogs. Participate in our events and make a difference!</p>
+            
+            <!-- Event Calendar -->
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="btn-small">❮</button>
+                    <h3 id="currentMonth"></h3>
+                    <button id="nextMonth" class="btn-small">❯</button>
+                </div>
+                <div class="calendar" id="calendar"></div>
+                <div class="calendar-legend">
+                    <span class="legend-item"><span class="event-dot adoption"></span> Adoption Drive</span>
+                    <span class="legend-item"><span class="event-dot vaccination"></span> Vaccination Camp</span>
+                    <span class="legend-item"><span class="event-dot awareness"></span> Awareness Program</span>
+                    <span class="legend-item"><span class="event-dot fundraising"></span> Fundraising Event</span>
+                </div>
+            </div>
+
+            <!-- Upcoming Events List -->
+            <div class="events-list">
+                <h2>Upcoming Events</h2>
+                <div class="event-cards" id="eventCards">
+                    <!-- Events will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Event Registration Modal -->
+            <div id="eventModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h3 id="modalEventTitle"></h3>
+                    <div id="modalEventDetails"></div>
+                    <form id="eventRegistrationForm">
+                        <h4>Register for this Event</h4>
+                        <div class="form-group">
+                            <label for="regName">Full Name *</label>
+                            <input type="text" id="regName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email *</label>
+                            <input type="email" id="regEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regPhone">Phone Number *</label>
+                            <input type="tel" id="regPhone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regParticipants">Number of Participants</label>
+                            <select id="regParticipants">
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5+">5+ People</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="regMessage">Special Requirements/Message</label>
+                            <textarea id="regMessage" rows="3" placeholder="Any special requirements, dietary needs, or messages..."></textarea>
+                        </div>
+                        <button type="submit" class="btn">Register Now</button>
+                        <div id="regLoading" class="loading-message" style="display: none;">Processing registration...</div>
+                        <div id="regSuccess" class="success-message" style="display: none;">Registration successful! You'll receive confirmation via email.</div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Past Events -->
+            <div class="past-events">
+                <h2>Past Events Highlights</h2>
+                <div class="past-event-gallery">
+                    <div class="past-event-card">
+                        <img src="https://via.placeholder.com/300x200/48A6A7/FFFFFF?text=Adoption+Drive" alt="Past adoption drive" loading="lazy">
+                        <div class="past-event-info">
+                            <h4>Community Adoption Drive</h4>
+                            <p>March 15, 2025 - Successfully placed 12 dogs in loving homes!</p>
+                        </div>
+                    </div>
+                    <div class="past-event-card">
+                        <img src="https://via.placeholder.com/300x200/9ACBD0/FFFFFF?text=Vaccination+Camp" alt="Past vaccination camp" loading="lazy">
+                        <div class="past-event-info">
+                            <h4>Free Vaccination Camp</h4>
+                            <p>March 8, 2025 - Vaccinated over 50 street dogs in local community</p>
+                        </div>
+                    </div>
+                    <div class="past-event-card">
+                        <img src="https://via.placeholder.com/300x200/2973B2/FFFFFF?text=Awareness+Program" alt="Past awareness program" loading="lazy">
+                        <div class="past-event-info">
+                            <h4>School Awareness Program</h4>
+                            <p>February 28, 2025 - Educated 200+ students about animal welfare</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Volunteer at Events -->
+            <div class="volunteer-events">
+                <h2>Volunteer at Our Events</h2>
+                <p>Want to help at our events? We're always looking for passionate volunteers!</p>
+                <div class="volunteer-roles">
+                    <div class="role-card">
+                        <h4>🐕 Animal Handlers</h4>
+                        <p>Help manage and care for animals during events</p>
+                    </div>
+                    <div class="role-card">
+                        <h4>📋 Registration Support</h4>
+                        <p>Assist with participant registration and information</p>
+                    </div>
+                    <div class="role-card">
+                        <h4>📢 Awareness Advocates</h4>
+                        <p>Help spread awareness and educate visitors</p>
+                    </div>
+                    <div class="role-card">
+                        <h4>📸 Documentation</h4>
+                        <p>Capture moments and help with social media</p>
+                    </div>
+                </div>
+                <button class="btn" onclick="window.location.href='about-us.html#volunteer'">Volunteer With Us</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <address>
+                <p>© 2025 NGO - Street Dogs. All Rights Reserved. Contact: <a href="mailto:info@ngostreetdogs.org">info@ngostreetdogs.org</a></p>
+            </address>
+            <ul class="socials" role="list">
+                <li><a href="https://facebook.com/ngostreetdogs" target="_blank" aria-label="Visit us on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://instagram.com/ngostreetdogs" target="_blank" aria-label="Visit us on Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/ngostreetdogs" target="_blank" aria-label="Visit us on Twitter"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+            <button class="btn" onclick="scrollToTop()">Back to Top</button>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

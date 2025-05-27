@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact us for street dog rescue, adoption queries, or to report emergency cases.">
+    <meta name="keywords" content="Contact, Street Dogs, NGO, Emergency, Rescue, Help">
+    <meta name="author" content="Srijan Sarvshresth">
+    <title>Contact Us | NGO - Street Dogs</title>
+    <link rel="icon" href="street_dog_NGO_favicon.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init({ publicKey: "-Rh-4kzkCcuPl6obd" });
+        })();
+    </script>
+</head>
+<body>
+    <header>
+        <nav role="navigation">
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html" target="_blank">Home</a></li>
+                <li><a href="about-us.html" target="_blank">About Us</a></li>
+                <li><a href="news.html" target="_blank">News</a></li>
+                <li><a href="donate.html" target="_blank">Donate</a></li>
+                <li><a href="adopt-us.html" target="_blank">Adopt Puppies</a></li>
+                <li><a href="contact-us.html" target="_blank">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="sec" id="contact-us">
+            <h1>Contact Us</h1>
+            <p>Get in touch with us for any queries, emergency rescue reports, or to learn more about our work.</p>
+            
+            <!-- Emergency Contact Section -->
+            <div class="emergency-contact">
+                <h2 style="color: #d32f2f;">🚨 Emergency Rescue</h2>
+                <p style="color: #d32f2f; font-weight: bold;">For immediate rescue needs, call us at: <a href="tel:+919939668514">+91 99396 68514</a></p>
+                <p>Available 24/7 for emergency cases</p>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>📍 Our Location</h3>
+                    <address>
+                        Street Dog NGO Headquarters<br>
+                        123 Animal Welfare Street<br>
+                        Delhi, India - 110001
+                    </address>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>📞 Phone Numbers</h3>
+                    <p>Main Office: <a href="tel:+919876543210">+91 98765 43210</a></p>
+                    <p>Adoption Queries: <a href="tel:+919876543211">+91 98765 43211</a></p>
+                    <p>Volunteer Coordination: <a href="tel:+919876543212">+91 98765 43212</a></p>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>✉️ Email Addresses</h3>
+                    <p>General: <a href="mailto:info@ngostreetdogs.org">info@ngostreetdogs.org</a></p>
+                    <p>Adoption: <a href="mailto:adopt@ngostreetdogs.org">adopt@ngostreetdogs.org</a></p>
+                    <p>Emergency: <a href="mailto:emergency@ngostreetdogs.org">emergency@ngostreetdogs.org</a></p>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-container">
+                <h3>Find Us Here</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.674209798425!2d77.23090931508236!3d28.65195158240653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd0683917595%3A0x1b06f649c6b9c0d5!2sRed%20Fort!5e0!3m2!1sen!2sin!4v1635750000000!5m2!1sen!2sin" 
+                    width="100%" 
+                    height="300" 
+                    style="border:0; border-radius: 10px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="NGO Location Map">
+                </iframe>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="contactForm" class="contact-form">
+                <h3>Send Us a Message</h3>
+                <div class="form-group">
+                    <label for="contactName">Full Name *</label>
+                    <input type="text" id="contactName" name="name" required aria-describedby="nameError">
+                    <span class="error-message" id="nameError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactEmail">Email Address *</label>
+                    <input type="email" id="contactEmail" name="email" required aria-describedby="emailError">
+                    <span class="error-message" id="emailError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactPhone">Phone Number</label>
+                    <input type="tel" id="contactPhone" name="phone" pattern="[0-9]{10}" aria-describedby="phoneError">
+                    <span class="error-message" id="phoneError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactSubject">Subject *</label>
+                    <select id="contactSubject" name="subject" required aria-describedby="subjectError">
+                        <option value="">Select a subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="adoption">Adoption Query</option>
+                        <option value="volunteer">Volunteer Application</option>
+                        <option value="emergency">Emergency Report</option>
+                        <option value="donation">Donation Query</option>
+                        <option value="partnership">Partnership/Collaboration</option>
+                    </select>
+                    <span class="error-message" id="subjectError"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contactMessage">Message *</label>
+                    <textarea id="contactMessage" name="message" rows="5" required aria-describedby="messageError" placeholder="Please provide details about your inquiry..."></textarea>
+                    <span class="error-message" id="messageError"></span>
+                </div>
+                
+                <button type="submit" class="btn">Send Message</button>
+                <div id="contactLoading" class="loading-message" style="display: none;">Sending message...</div>
+                <div id="contactSuccess" class="success-message" style="display: none;">Thank you! Your message has been sent successfully.</div>
+                <div id="contactError" class="error-message" style="display: none;">Sorry, there was an error sending your message. Please try again.</div>
+            </form>
+
+            <!-- Emergency Report Form -->
+            <form id="emergencyForm" class="emergency-form">
+                <h3 style="color: #d32f2f;">🚨 Report Emergency Rescue Case</h3>
+                <p>Use this form to report injured, sick, or distressed street animals that need immediate attention.</p>
+                
+                <div class="form-group">
+                    <label for="reporterName">Your Name *</label>
+                    <input type="text" id="reporterName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reporterPhone">Your Phone Number *</label>
+                    <input type="tel" id="reporterPhone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="emergencyLocation">Exact Location *</label>
+                    <textarea id="emergencyLocation" rows="2" required placeholder="Provide detailed address, landmarks, or GPS coordinates"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="animalCondition">Animal's Condition *</label>
+                    <textarea id="animalCondition" rows="3" required placeholder="Describe the animal's condition, injuries, or situation"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="animalType">Animal Type</label>
+                    <select id="animalType">
+                        <option value="dog">Dog</option>
+                        <option value="cat">Cat</option>
+                        <option value="puppy">Puppy</option>
+                        <option value="kitten">Kitten</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="urgencyLevel">Urgency Level *</label>
+                    <select id="urgencyLevel" required>
+                        <option value="">Select urgency</option>
+                        <option value="critical">Critical - Life threatening</option>
+                        <option value="urgent">Urgent - Needs immediate care</option>
+                        <option value="moderate">Moderate - Can wait a few hours</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn emergency-btn">Report Emergency</button>
+                <div id="emergencyLoading" class="loading-message" style="display: none;">Sending emergency report...</div>
+                <div id="emergencySuccess" class="success-message" style="display: none;">Emergency report sent! We'll respond as soon as possible.</div>
+            </form>
+
+            <!-- Working Hours -->
+            <div class="working-hours">
+                <h3>🕒 Working Hours</h3>
+                <div class="hours-grid">
+                    <div>
+                        <strong>Office Hours:</strong><br>
+                        Monday - Friday: 9:00 AM - 6:00 PM<br>
+                        Saturday: 9:00 AM - 4:00 PM<br>
+                        Sunday: Closed
+                    </div>
+                    <div>
+                        <strong>Emergency Response:</strong><br>
+                        Available 24/7 for critical cases<br>
+                        Response time: 30 minutes - 2 hours<br>
+                        (depending on location and severity)
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <address>
+                <p>© 2025 NGO - Street Dogs. All Rights Reserved. Contact: <a href="mailto:info@ngostreetdogs.org">info@ngostreetdogs.org</a></p>
+            </address>
+            <ul class="socials" role="list">
+                <li><a href="https://facebook.com/ngostreetdogs" target="_blank" aria-label="Visit us on Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="https://instagram.com/ngostreetdogs" target="_blank" aria-label="Visit us on Instagram"><i class="fab fa-instagram"></i></a></li>
+                <li><a href="https://twitter.com/ngostreetdogs" target="_blank" aria-label="Visit us on Twitter"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+            <button class="btn" onclick="scrollToTop()">Back to Top</button>
+        </div>
+    </footer>
+    <script src="script.js" defer></script>
+</body>
+</html>

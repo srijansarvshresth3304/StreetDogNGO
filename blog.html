@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about street dog care, animal welfare, and how to help stray animals in your community.">
+    <meta name="keywords" content="Blog, Street Dogs, Animal Care, Pet Tips, Animal Welfare, Education">
+    <meta name="author" content="Srijan Sarvshresth">
+    <title>Blog & Resources | NGO - Street Dogs</title>
+    <link rel="icon" href="street_dog_NGO_favicon.webp" type="image/webp">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav role="navigation">
+            <div class="hamburger" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about-us.html">About Us</a></li>
+                <li><a href="news.html">News</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="adopt-us.html">Adopt Puppies</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="blog.html">Blog</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="sec" id="blog">
+            <h1>Blog & Educational Resources</h1>
+            <p>Learn how to care for street dogs, understand animal welfare, and make a positive impact in your community.</p>
+            
+            <!-- Search and Filter -->
+            <div class="blog-controls">
+                <div class="search-container">
+                    <input type="text" id="blogSearch" placeholder="Search articles..." aria-label="Search blog articles">
+                    <button onclick="searchBlog()" class="btn-small">🔍</button>
+                </div>
+                <div class="filter-container">
+                    <select id="blogCategory" onchange="filterBlog()">
+                        <option value="all">All Categories</option>
+                        <option value="care">Animal Care</option>
+                        <option value="health">Health & Medical</option>
+                        <option value="behavior">Animal Behavior</option>
+                        <option value="community">Community Help</option>
+                        <option value="adoption">Adoption Tips</option>
+                        <option value="awareness">Awareness</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Featured Article -->
+            <div class="featured-article">
+                <h2>Featured Article</h2>
+                <article class="featured-post">
+                    <img src="https://via.placeholder.com/600x300/48A6A7/FFFFFF?text=Featured+Article" alt="Featured article image" loading="lazy">
+                    <div class="featured-content">
+                        <h3>Complete Guide to Helping Street Dogs in Your Community</h3>
+                        <p class="article-meta">Published on May 20, 2025 | Category: Community Help</p>
+                        <p>Street dogs are an integral part of our communities, and with the right approach, we can ensure their welfare while maintaining harmony. This comprehensive guide covers everything from feeding protocols to emergency care...</p>
+                        <button class="btn" onclick="openArticle('featured-guide')">Read Full Article</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Blog Articles Grid -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- Articles will be populated by JavaScript -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="btn" onclick="loadMoreArticles()">Load More Articles</button>
+            </div>
+
+            <!-- Quick Tips Section -->
+            <div class="quick-tips">
+                <h2>Quick Tips for Animal Lovers</h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <h4>🍽️ Feeding Street Dogs</h4>
+                        <ul>
+                            <li>Feed at consistent times</li>
+                            <li>Use clean bowls and fresh water</li>
+                            <li>Avoid spicy or salty foods</li>
+                            <li>Keep feeding area clean</li>
+                        </ul>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🚨 Emergency Situations</h4>
+                        <ul>
+                            <li>Assess the situation safely</li>
+                            <li>Contact local NGOs or vets</li>
+                            <li>Provide basic first aid if trained</li>
+                            <li>Document with photos</li>
+                        </ul>
+                    </div>
+                    <div class="tip-card">
+                        <h4>🏠 Creating Safe Spaces</h4>
+                        <ul>
+                            <li>Provide shelter from weather</li>
+                            <li>Ensure clean surroundings</li>
+                            <li>Keep away from traffic</li>
+                            <li>Regular health check-ups</li>
+                        </ul>
+                    </div>
+                    <div class="tip-card">
+                        <h4>❤️ Building Trust</h4>
+                        <ul>
+                            <li>Approach slowly and calmly</li>
+                            <li>Let them come to you</li>
+                            <li>Use gentle voice tones</li>
+                            <li>Be patient and consistent</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="resources-section">
+                <h2>Helpful Resources</h2>
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <h4>📞 Emergency Contacts</h4>
+                        <p>List of veterinarians, NGOs, and emergency services in major cities.</p>
+                        <button class="btn-small" onclick="downloadResource('emergency-contacts')">Download List</button>
+                    </div>
+                    <div class="resource-card">
+                        <h4>📋 First Aid Guide</h4>
+                        <p>Step-by-step guide for basic first aid for injured animals.</p>
+                        <button class="btn-small" onclick="downloadResource('first-aid-guide')">Download Guide</button>
+                    </div>
+                    <div class="resource-card">
+                        <h4>🏛️ Legal Information</h4>
+                        <p>Know your rights and responsibilities regarding street animals.</p>
+                        <button class="btn-small" onclick="downloadResource('legal-info')">Download Info</button>
+                    </div>
+                    <div class="resource-card">
+                        <h4>📚 Care Manual</h4>
+                        <p>Comprehensive manual for caring for adopted street dogs.</p>
+                        <button class="btn-small" onclick="downloadResource('care-manual')">Download Manual</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="newsletter-signup">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest articles, tips, and updates!</p>
+                <form id="newsletterForm">
+                    <div class="newsletter-form">
+                        <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                        <button type="submit" class="btn">Subscribe</button>
+                    </div>
+                    <div id="newsletterSuccess" class="success-message" style="display: none;">Thank you for subscribing!</div>
+                </form>
+            </div
