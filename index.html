@@ -45,7 +45,11 @@
                 <li><a href="news.html" target="_blank">News</a></li>
                 <li><a href="donate.html" target="_blank">Donate</a></li>
                 <li><a href="adopt-us.html" target="_blank">Adopt Puppies</a></li>
+                <li><a href="event-calendar.html" target="_blank">Events</a></li>
+                <li><a href="contact-us.html" target="_blank">Contact</a></li>
+                <li><a href="blog.html" target="_blank">Blog</a></li>
             </ul>
+
         </nav>
         <div class="gallery">
             <button class="arrow left-arrow" id="left-arrow" onclick="slideLeft()" aria-label="Previous image">❮</button>
@@ -120,5 +124,52 @@
         </div>
     </footer>
     <script src="script.js" defer></script>
+    <!-- Firebase SDK (Older Version for Simple Use) -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
+
+<!-- Firebase Config (Aapne jo copy kiya tha) -->
+<script>
+  // Firebase Configuration (Aapne jo nickname ke saath banaya tha)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBa1Vm0XFKEnET4X6wkaBzNDplq-IXcHaU",
+    authDomain: "street-dog-ngo.firebaseapp.com",
+    projectId: "street-dog-ngo",
+    storageBucket: "street-dog-ngo.firebasestorage.app",
+    messagingSenderId: "833884856752",
+    appId: "1:833884856752:web:217572c7c603b658f3b675",
+    measurementId: "G-BNKKR2SLMH"
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+
+  // Contact Form Submission Handler
+  document.getElementById("contactForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Default form submission ko rokna
+
+    // Form ke data ko collect karna
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    // Firebase mein data store karna
+    db.collection("messages").add({
+      name: name,
+      email: email,
+      message: message,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
+    .then(() => {
+      document.getElementById("formStatus").textContent = "Message sent successfully!";
+      document.getElementById("contactForm").reset(); // Form reset karna
+    })
+    .catch((error) => {
+      document.getElementById("formStatus").textContent = "Error sending message. Please try again.";
+      console.error("Error: ", error);
+    });
+  });
+</script>
 </body>
 </html>
