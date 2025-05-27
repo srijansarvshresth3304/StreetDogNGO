@@ -212,4 +212,44 @@
         document.getElementById('filterType')?.addEventListener('change', filterAnimals);
         renderGallery(animals);
     }
+
+    // Contact Form Handling
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const loadingMessage = document.getElementById('contactLoading');
+            const successMessage = document.getElementById('contactSuccess');
+            const errorMessage = document.getElementById('contactError');
+
+            if (loadingMessage) loadingMessage.style.display = 'block';
+            setTimeout(() => {
+                if (loadingMessage) loadingMessage.style.display = 'none';
+                if (successMessage) successMessage.style.display = 'block';
+                const contactName = document.getElementById('contactName')?.value;
+                const contactEmail = document.getElementById('contactEmail')?.value;
+                const contactPhone = document.getElementById('contactPhone')?.value;
+                const contactSubject = document.getElementById('contactSubject')?.value;
+                const contactMessage = document.getElementById('contactMessage')?.value;
+
+                emailjs.send('service_ou9h6z4', 'template_slw0vbb', {
+                    name: contactName,
+                    email: contactEmail,
+                    phone: contactPhone,
+                    subject: contactSubject,
+                    message: contactMessage,
+                    to_email: 'srijansarv1345@gmail.com'
+                }).then(() => {
+                    console.log('Contact email sent!');
+                }).catch(error => {
+                    console.error('Error sending contact email:', error);
+                });
+
+                contactForm.reset();
+                setTimeout(() => {
+                    if (successMessage) successMessage.style.display = 'none';
+                }, 5000);
+            }, 2000);
+        });
+    }
 })();
