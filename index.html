@@ -9,7 +9,7 @@
     <meta name="keywords" content="Street Dogs, NGO, Adopt, Rescue, Donate, Animal Welfare, Volunteer">
     <meta name="author" content="Srijan Sarvshresth">
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="继父 - Street Dogs | Rescue and Adoption">
+    <meta property="og:title" content="NGO - Street Dogs | Rescue and Adoption">
     <meta property="og:description" content="Join us in our mission to rescue and care for street dogs. Adopt a puppy today and make a difference!">
     <meta property="og:image" content="https://yourdomain.com/Images/og-image.jpg">
     <meta property="og:url" content="https://yourdomain.com">
@@ -25,13 +25,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
     <!-- Title -->
     <title>NGO - Street Dogs | Rescue and Adoption</title>
-    <!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){
-            emailjs.init({ publicKey: "-Rh-4kzkCcuPl6obd" });
-        })();
-    </script>
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script src="script.js"></script>
+
     <!-- CSS Link -->
     <link rel="stylesheet" href="style.css">
 </head>
@@ -124,52 +120,5 @@
         </div>
     </footer>
     <script src="script.js" defer></script>
-    <!-- Firebase SDK (Older Version for Simple Use) -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"></script>
-
-<!-- Firebase Config (Aapne jo copy kiya tha) -->
-<script>
-  // Firebase Configuration (Aapne jo nickname ke saath banaya tha)
-  const firebaseConfig = {
-    apiKey: "AIzaSyBa1Vm0XFKEnET4X6wkaBzNDplq-IXcHaU",
-    authDomain: "street-dog-ngo.firebaseapp.com",
-    projectId: "street-dog-ngo",
-    storageBucket: "street-dog-ngo.firebasestorage.app",
-    messagingSenderId: "833884856752",
-    appId: "1:833884856752:web:217572c7c603b658f3b675",
-    measurementId: "G-BNKKR2SLMH"
-  };
-
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-
-  // Contact Form Submission Handler
-  document.getElementById("contactForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Default form submission ko rokna
-
-    // Form ke data ko collect karna
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    // Firebase mein data store karna
-    db.collection("messages").add({
-      name: name,
-      email: email,
-      message: message,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp()
-    })
-    .then(() => {
-      document.getElementById("formStatus").textContent = "Message sent successfully!";
-      document.getElementById("contactForm").reset(); // Form reset karna
-    })
-    .catch((error) => {
-      document.getElementById("formStatus").textContent = "Error sending message. Please try again.";
-      console.error("Error: ", error);
-    });
-  });
-</script>
 </body>
 </html>
