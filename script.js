@@ -1,23 +1,22 @@
 (function () {
     'use strict';
 
+    // Ensure EmailJS is initialized once DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        emailjs.init('8sYByyvq4OhVG4hZn');  // Make sure this key is correct
+        galleryInit();  // Call updated gallery init function
+    });
+
+    // 📸 GALLERY SLIDER LOGIC
     const galleryControls = (function () {
         const imagesContainer = document.querySelector('.images-container');
         const images = imagesContainer ? imagesContainer.querySelectorAll('img') : [];
-        const leftArrow = document.getElementById('left-arrow');
-        const rightArrow = document.getElementById('right-arrow');
+        const leftArrow = document.querySelector('#left-arrow');
+        const rightArrow = document.querySelector('#right-arrow');
         const dotsContainer = document.querySelector('.dots-container');
         const gallery = document.querySelector('.gallery');
         let currentIndex = 0;
         let autoSlideTimeout;
-
-        function debounce(func, wait) {
-            let timeout;
-            return function (...args) {
-                clearTimeout(timeout);
-                timeout = setTimeout(() => func.apply(this, args), wait);
-            };
-        }
 
         function updateArrows() {
             if (leftArrow && rightArrow) {
@@ -42,7 +41,8 @@
 
         function updateGallery() {
             if (imagesContainer && images.length > 0) {
-                imagesContainer.style.transform = `translateX(-${currentIndex * 100}vw)`;
+                const imageWidth = images[0].offsetWidth;
+                imagesContainer.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
                 updateArrows();
                 updateDots();
                 resetAutoSlide();
@@ -69,9 +69,7 @@
                     const dot = document.createElement('span');
                     dot.classList.add('dot');
                     dot.setAttribute('role', 'tab');
-                    if (index === currentIndex) {
-                        dot.classList.add('active');
-                    }
+                    if (index === currentIndex) dot.classList.add('active');
                     dot.addEventListener('click', () => {
                         currentIndex = index;
                         updateGallery();
@@ -83,89 +81,106 @@
 
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('active');
+            navLinks?.classList.toggle('active');
         }
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function init() {
+        function galleryInit() {
             if (images.length === 0) {
                 console.error('No images found in gallery.');
                 return;
             }
+
             updateArrows();
             updateDots();
             startAutoSlide();
 
-            if (leftArrow) leftArrow.addEventListener('click', slideLeft);
-            if (rightArrow) rightArrow.addEventListener('click', slideRight);
+            leftArrow?.addEventListener('click', slideLeft);
+            rightArrow?.addEventListener('click', slideRight);
 
-            if (gallery) {
-                gallery.addEventListener('mouseenter', () => clearTimeout(autoSlideTimeout));
-                gallery.addEventListener('mouseleave', () => startAutoSlide());
-                gallery.addEventListener('touchstart', () => clearTimeout(autoSlideTimeout));
-                gallery.addEventListener('touchend', () => startAutoSlide());
-            }
+            gallery?.addEventListener('mouseenter', () => clearTimeout(autoSlideTimeout));
+            gallery?.addEventListener('mouseleave', startAutoSlide);
+            gallery?.addEventListener('touchstart', () => clearTimeout(autoSlideTimeout));
+            gallery?.addEventListener('touchend', startAutoSlide);
 
             window.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowLeft') slideLeft();
-                else if (e.key === 'ArrowRight') slideRight();
+                if (e.key === 'ArrowRight') slideRight();
             });
         }
 
-        document.addEventListener('DOMContentLoaded', init);
-
-        return { toggleMenu, scrollToTop };
+        return { toggleMenu, scrollToTop, galleryInit };
     })();
 
-    window.toggleMenu = galleryControls.toggleMenu;
-    window.scrollToTop = galleryControls.scrollToTop;
+    const { toggleMenu, scrollToTop, galleryInit } = galleryControls;
+    window.toggleMenu = toggleMenu;
+    window.scrollToTop = scrollToTop;
 
-    // EmailJS Donation Handling
-    function sendEmailToBoth() {
-        const donorName = document.getElementById('name')?.value;
-        const donorEmail = document.getElementById('email')?.value;
-        const donorAmount = document.getElementById('amount')?.value;
-
-        // Email to NGO Owner
-        emailjs.send('service_ou9h6z4', 'template_slw0vbb', {
-            name: donorName,
-            email: donorEmail,
-            amount: donorAmount,
-            to_email: 'srijansarv1345@gmail.com'
-        }).then(() => {
-            console.log('NGO email sent!');
-        }).catch(error => {
-            console.error('Error sending NGO email:', error);
+    // 📧 EMAILJS FOR DONATIONS - UPDATED WITH PROPER TEMPLATE PARAMS
+    function sendEmailToBoth(name, email, amount) {
+        const currentTime = new Date().toLocaleString('en-IN', {
+            day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit',
+            hour12: true
         });
 
-        // Email to Donor
-        emailjs.send('service_ou9h6z4', 'template_b2unv72', {
-            name: donorName,
-            amount: donorAmount,
-            email: donorEmail
-        }).then(() => {
-            console.log('Client email sent!');
-        }).catch(error => {
-            console.error('Error sending client email:', error);
+        const emailData = {
+            service_id: 'service_g0hhe8n',        // ✅ Your EmailJS service ID
+            template_id: 'template_osqwphg',      // ✅ Your EmailJS template ID
+            user_id: '8sYByyvq4OhVG4hZn',         // ✅ Your public key
+            template_params: {
+                name: name,                       // Must match {{name}} in EmailJS template
+                amount: amount,                   // Must match {{amount}}
+                time: currentTime,                // Must match {{time}}
+                to_email: email                   // Must match {{to_email}}
+            }
+        };
+
+        fetch('https://api.emailjs.com/api/v1.0/email/send', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(emailData)
+        })
+        .then(async response => {
+            if (response.ok) {
+                console.log('Email sent successfully!');
+                alert('Thank you! We have received your request.');
+            } else {
+                const errorText = await response.text();
+                console.error('Error response from EmailJS:', errorText);
+                alert('Error sending email: ' + errorText);
+            }
+        })
+        .catch(error => {
+            console.error('Network or other error:', error);
+            alert('Oops! Something went wrong: ' + error.message);
         });
+        
     }
 
+    // 🧾 HANDLE DONATION FORM
     const donationForm = document.getElementById('donationForm');
     if (donationForm) {
-        donationForm.addEventListener('submit', function(e) {
+        donationForm.addEventListener('submit', function (e) {
             e.preventDefault();
+
+            const name = document.getElementById('name')?.value;
+            const email = document.getElementById('email')?.value;
+            const amount = document.getElementById('amount')?.value;
             const loadingMessage = document.getElementById('loadingMessage');
             const confirmationMessage = document.getElementById('confirmationMessage');
 
             if (loadingMessage) loadingMessage.style.display = 'block';
+
             setTimeout(() => {
                 if (loadingMessage) loadingMessage.style.display = 'none';
                 if (confirmationMessage) confirmationMessage.style.display = 'block';
-                sendEmailToBoth();
+
+                sendEmailToBoth(name, email, amount);
                 donationForm.reset();
+
                 setTimeout(() => {
                     if (confirmationMessage) confirmationMessage.style.display = 'none';
                 }, 5000);
@@ -173,7 +188,7 @@
         });
     }
 
-    // Adopt Gallery Dynamic Content
+    // 🐶 ADOPT GALLERY
     const adoptGallery = document.getElementById('gallery');
     if (adoptGallery) {
         const animals = [
@@ -196,8 +211,8 @@
         }
 
         function filterAnimals() {
-            const searchInput = document.getElementById('searchInput')?.value.toLowerCase();
-            const filterType = document.getElementById('filterType')?.value;
+            const searchInput = document.getElementById('searchInput')?.value.toLowerCase() || '';
+            const filterType = document.getElementById('filterType')?.value || 'all';
 
             const filteredAnimals = animals.filter(animal => {
                 const matchesSearch = animal.name.toLowerCase().includes(searchInput) || animal.location.toLowerCase().includes(searchInput);
@@ -213,26 +228,27 @@
         renderGallery(animals);
     }
 
-    // Contact Form Handling
+    // 📬 CONTACT FORM
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
             const loadingMessage = document.getElementById('contactLoading');
             const successMessage = document.getElementById('contactSuccess');
-            const errorMessage = document.getElementById('contactError');
 
             if (loadingMessage) loadingMessage.style.display = 'block';
+
             setTimeout(() => {
                 if (loadingMessage) loadingMessage.style.display = 'none';
                 if (successMessage) successMessage.style.display = 'block';
+
                 const contactName = document.getElementById('contactName')?.value;
                 const contactEmail = document.getElementById('contactEmail')?.value;
                 const contactPhone = document.getElementById('contactPhone')?.value;
                 const contactSubject = document.getElementById('contactSubject')?.value;
                 const contactMessage = document.getElementById('contactMessage')?.value;
 
-                emailjs.send('service_ou9h6z4', 'template_slw0vbb', {
+                emailjs.send('service_g0hhe8n', 'template_osqwphg', {
                     name: contactName,
                     email: contactEmail,
                     phone: contactPhone,
